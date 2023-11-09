@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>WELCOME TO FORK</title>
+        <link rel="stylesheet" href="hm.css">
+        <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav>
+                <a href="home.html">
+                <img src="forkname2.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+                </a>
+            </nav>
+            <a href="welcome.html">
+                <button id="logout-button">Log Out</button>
+            </a>
+            <a href="">
+                <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+            </a>
+        </div>
+        <div class="drawer">
+            <div class="ho1">
+                <a href="home.html">
+                    <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+                </a>
+            </div>
+            <div class="ho2">
+                <a href="profile.html">
+                    <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+            </div>
+            <div class="ho3">
+                <a href="about.html">
+                <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+           </div> 
+        </div>
+        <div class="container">
+            <div class="searchbar">
+                <input type="search" id="searchb" placeholder="Search">
+            </div>
+            <div class="category">
+                <div class="cat1">
+                    <h1>Socials</h1>
+                    <img id="openPopup">
+                    <div id="popupContainer" class="popup">
+                        <div class="popup-content">
+                            <span class="close" id="closePopup">&times;</span>
+                            <img src="ig.webp">
+                            <h2>Instagram</h2>
+                            
+
+                            <div class="rating-counter">
+                                <span id="ratingValue">0</span> (<span id="averageRating">0</span>)
+                            </div>
+
+
+
+
+                            <div class="specs">
+                                <li>Updated On</li>
+                                <li>App Version</li>
+                                <li>File Size</li>
+                            </div>
+                            <div class="details">
+                                <li>August 6, 2023</li>
+                                <li>295.0.0.32.109</li>
+                                <li>50.30MB</li>
+                            </div>
+                            <div class="dwnld">
+                                <button>Download</button>
+                            </div>
+                            <div class="user-feedback">
+                                <label for="rating"></label>
+                                <h6>Rate (5-1 Star/s):</h6>
+                                <div class="starability-basic">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label for="star5"></label>
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label for="star4"></label>
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label for="star3"></label>
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label for="star2"></label>
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label for="star1"></label>
+                                </div>
+                                    <textarea id="comment" rows="4" placeholder="Your comment"></textarea>
+                                    <button id="submit">Submit</button>
+                                </div>
+                                <div class="info">
+                                    <t>App Info</t>
+                                    <p>Date Released: Apr 3, 2012</p>
+                                    <p>Offered by: Instagram</p>
+                                    <p>Required OS: Android 7.0 and up</p>
+                                </div>
+                        </div>
+                    </div>
+                    <h1_1>Instagram</h1_1>
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="cat2">
+                    <h2>Games</h2>
+                </div>
+                <div class="cat3">
+                    <h3>Educational</h3>
+                </div>
+                <div class="cat4">
+                    <h4>Family</h4>
+                </div>
+                <div class="cat5">
+                    <h5>Tools</h5>
+                </div>
+            </div>
+        </div>
+        <script src="pfpmanager.js"></script>
+        <script src="script.js"></script>
+        <script>
+            // JavaScript code to update the rating counter
+            const ratingElements = document.querySelectorAll('.starability-basic input');
+        const ratingCounter = document.getElementById('ratingValue');
+        const averageRating = document.getElementById('averageRating');
+
+        ratingElements.forEach(input => {
+            input.addEventListener('change', function() {
+                const ratings = Array.from(ratingElements)
+                    .filter(input => input.checked)
+                    .map(input => parseInt(input.value));
+
+                const ratingSum = ratings.reduce((total, rating) => total + rating, 0);
+                const ratingAverage = ratings.length > 0 ? (ratingSum / ratings.length).toFixed(1) : 0;
+
+                ratingCounter.textContent = '\u2605'.repeat(this.value);
+                averageRating.textContent = ratingAverage;
+            });
+        });
+        </script>
+    </body>
+</html>
