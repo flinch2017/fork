@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>FOR CREATORS | REGISTER</title>
+    <link rel="stylesheet" href="s_upfp.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <a href="welcome.html">
+                <img src="logo1.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+            </a>
+            <ul>
+                <li><a href="prelogapps.html">Apps</a></li>
+                <li><a href="preforkp.html">For Creators</a></li>
+                <li><a href="preabout.html">About Us</a></li>
+            </ul>
+            <a href="sign_up.html">
+                <button>Join fork</button>
+            </a>
+            
+            <a href="sign_in.html">
+                <su_header>Sign In</su_header>
+            </a>
+        </nav>
+    </div>
+
+    <div class="wrapper2">
+        <a>FOR CREATORS</a>
+    </div>
+
+    <div class="wrapper3">
+        <div class="container" style="margin-left: 600px; margin-top: -300px; width: 1000px;">
+            <form action="/creators/signup" method="POST">
+                <h2>REGISTER</h2>
+                <sub1 style="font-size: 12px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: -15px; margin-bottom: 10px;">Please provide what is asked!</sub1>
+                <sub2 style="font-size: 13px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: 10px;">PART ONE</sub2>
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
+                <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+                <input type="text" id="workplace" name="workplace" placeholder="Workplace (If you're a student please enter your school)" required>
+                <input type="date" id="birthdate" name="birthdate" placeholder="Birthday" required>
+
+                <sub3 style="font-size: 13px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: 20px;">PART TWO</sub3>
+                <sub4 style="font-size: 12px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: 10px; margin-bottom: 10px;">Provide a squared profile picture</sub4>
+                <div class="pluspfp">
+                    <input type="file" id="pfpp" name="profilePicture" placeholder="Profile Picture Plus">
+                </div>
+                <sub5 style="font-size: 12px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: -30px; margin-bottom: 10px;">Provide a Valid ID</sub5>
+                <div class="valid">
+                    <input type="file" id="validid" name="validID" placeholder="Valid ID">
+                </div>
+
+                <sub6 style="font-size: 13px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: 20px;">PART THREE</sub6>
+
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <input type="password" id="password1" name="password1" placeholder="Create Password" required>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <footertitle>SIGN UP FOR fork TODAY!</footertitle>
+        <footersub>And download applications for free!</footersub>
+
+        <div class="container">
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <h1>Message Us</h1>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="text" id="phone" placeholder="Phone Number" required>
+                <textarea id="message" rows="4" placeholder="Enter message..."></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <img src="logo1.png" style="height: 150px; width: 150px; float: right; margin-right: 180px; margin-top: -200px">
+        </div>
+    </div>
+    <script src="server.js"></script>
+</body>
+</html>

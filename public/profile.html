@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WELCOME TO FORK</title>
+    <link rel="stylesheet" href="pf.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+    <style>
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        /* Style for the modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Style for the profile picture container */
+        .profile-picture-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Style for the select picture button */
+        .select-picture-button {
+            margin-top: 10px;
+            width: auto;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: black;
+            color: yellow;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        /* Style for the username input field */
+        .username-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            margin-top: 0px;
+        }
+
+        /* Style for the confirm edits button */
+        .confirm-edits-button {
+            width: auto;
+            height: auto;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: black;
+            color: yellow;
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            margin-top: 30px;
+            display: block;
+        }
+
+        /* Error message style */
+        .error-message {
+            color: red;
+        }
+
+        /* Profile details */
+        .profile-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Profile picture */
+        .profile-picture-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Username display */
+        .username-display {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Additional profile details */
+        .additional-details {
+            text-align: right;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        /* Phone number and Facebook account */
+        .additional-details p {
+            margin-bottom: 10px;
+        }
+
+        /* Editor styles */
+        .editor {
+            margin-top: 20px;
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .editor p {
+            margin-bottom: 10px;
+        }
+
+        .thename {
+    display: flex; /* Use flexbox to display the contents horizontally */
+    justify-content: center; /* Center the items horizontally */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.thename p {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center the items vertically */
+    margin-right: 0px; /* Adjust spacing between items */
+    margin-left: 1px;
+}
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+        <a href="home.html">
+            <img src="forkname2.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+        </a>
+    </nav>
+    <a href="welcome.html">
+        <button>Log Out</button>
+    </a>
+    <a href="">
+        <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+    </a>
+</div>
+<div class="drawer">
+    <div class="ho1">
+        <a href="home.html">
+            <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+        </a>
+    </div>
+    <div class="ho2">
+        <a href="profile.html">
+            <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+        </a>
+    </div>
+    <div class="ho3">
+        <a href="about.html">
+            <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="bg">
+
+    </div>
+
+    <div class="separ">
+    </div>
+    <div class="tag" style="color: black; font-size: 20px; text-align: center; font-family: Arial, Helvetica, sans-serif; margin-top: -450px; margin-left: 40px;">
+        <img src="pfpalt.jpg" style="height: 20px; margin-top: 5px; border-radius: 50%;">
+        <tagger style="font-weight: 550;">Profile</tagger>
+    </div>
+    <div class="pfp">
+
+
+        <!-- Profile picture container with default picture -->
+        <div class="profile-picture-container">
+            <!-- Display default profile picture -->
+            <img id="profile-picture" src="pfpalt.jpg" alt="Default Profile Picture">
+            <!-- Username field -->
+            <div id="user-username" style="font-family: Arial, Helvetica, sans-serif;">
+
+            </div>
+            <!-- Button to select profile picture -->
+            <button class="select-picture-button" onclick="openModal()">Edit Profile</button>
+        </div>
+
+        <!-- Edit Profile Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h3>Edit Profile</h3>
+                <!-- Username input -->
+                <input type="text" id="username" class="username-input" placeholder="Enter Username">
+                <p id="usernameError" class="error-message"></p>
+                <!-- Phone number input -->
+                <input type="text" id="phoneNumber" class="username-input" placeholder="Enter Phone Number">
+                <!-- Facebook account input -->
+                <input type="text" id="facebookAccount" class="username-input" placeholder="Enter Facebook Account">
+                <!-- Input to select profile picture -->
+                <h9 style="color: black; font-family: Arial, Helvetica, sans-serif; margin-bottom: 20px;">Select Profile Picture</h9>
+                <input type="file" name="profilePicture" id="profilePictureInput" accept="image/*">
+                <!-- Confirm Edits button -->
+                <button class="confirm-edits-button" onclick="confirmEdits()">Confirm Edits</button>
+                <!-- Close button -->
+                <button onclick="closeModal()">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Additional details -->
+    <div class="details">
+        <div id="profile-details" style="margin-left: 800px; margin-top: -60px; font-family: Arial, Helvetica, sans-serif;">
+        
+        </div>
+    </div>
+    
+
+   
+</div>
+<script>
+    fetch('/user-details')
+            .then(response => response.json())
+            .then(user => {
+                // Update HTML elements with user details
+                const profileDetails = document.getElementById('profile-details');
+                profileDetails.innerHTML = `
+                    <p style="margin-bottom: 5px;"><img src="pfpalt.jpg" style="height: 20px; width: 20px; border-radius: 50%"> ${user.fullname}</p>
+                    <p style="margin-bottom: 5px;"><img src="conmail.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.email}</p>
+                    <p style="margin-bottom: 5px;"><img src="wplacealt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.workplace}</p>
+                    <p style="margin-bottom: 5px;"><img src="workalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.occupation}</p>
+                    <p style="margin-bottom: 5px;"><img src="homealt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.address}</p>
+                    <p style="margin-bottom: 5px;"><img src="connumalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.contactnumber}</p>
+                    <p style="margin-bottom: 5px;"><img src="bdayalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.birthday}</p>
+                `;
+                const userNames = document.getElementById('user-username');
+                userNames.innerHTML = `
+                    <ul class="thename">
+                    <p>@</p>
+                    <p>${user.username}</p>
+                    </ul>
+                `;
+            })
+            .catch(error => console.error('Error fetching user details:', error));
+</script>
+</body>
+</html>

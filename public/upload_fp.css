@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background-image: url("bgalt.jfif");
+    background-size: cover;
+    height: 1000px;
+}
+nav{
+    display: inline-block;
+    position: fixed;
+    background-color: black;
+    width: parent;
+    margin-left: -5px;
+    height: 50px;
+}
+
+
+
+.wrapper button{
+    height: 20px;
+    width: 90px;
+    background-color: yellow;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    margin-left: 1110px;
+    margin-top: 16px;
+
+}
+.wrapper button:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.wrapper{
+	border: none;
+	background: black;
+	padding: 0 5px;
+	height: 50px;
+	font-size: 12px;
+	outline: none;
+    position: fixed;
+}
+
+.drawer{
+    margin-top: 50px;
+    width: 60px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    border-radius: 0px;
+    height: 600px;
+    position: fixed;
+    display: inline-block;
+    background-color: black;
+    padding: 15px;
+}
+
+.bg{
+    background-image: url("prefp.jpg");
+    height: 1000px;
+    width: 1218px;
+}
+
+.fupload{
+    margin-left: 700px;
+    margin-right: 120px;
+    margin-top: -900px;
+    height: fit-content
+    width: 400px;
+    background-color: black;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.fupload h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin-bottom: 0px;
+    font-size: 15px;
+    
+}
+.fupload h3{
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -60px;
+    
+}
+.fupload h4{
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.fupload h5{
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form input, form textarea{
+    border: 0;
+    margin: 10px 0;
+    padding: 10px;
+    outline: none;
+    background-color: white;
+    font-size: 13px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 30px;
+}
+
+.fupload button{
+    height: 30px;
+    width: 100px;
+    background-color: yellow;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-left: 120px;
+    border-radius: 10px;
+    border: 0;
+    font-weight: 600;
+    margin-top: 40px;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WELCOME TO FORK+</title>
+    <link rel="stylesheet" href="ctlg_fp.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <a href="catalog_fp.html">
+                <img src="forknamep.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+            </a>
+        </nav>
+        <a href="welcome.html">
+            <button>Log Out</button>
+        </a>
+        <a href="">
+            <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+        </a>
+    </div>
+    <div class="drawer">
+        <div class="ho1">
+            <a href="catalog_fp.html">
+                <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+            </a>
+        </div>
+        <div class="ho2">
+            <a href="profile_fp.html">
+                <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+            </a>
+        </div>
+        <div class="ho3">
+            <a href="about_fp.html">
+                <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="bg">
+        </div>
+        <div class="cat" style="margin-top: -900px; color: white; font-family: Arial, Helvetica, sans-serif; margin-left: 150px; font-weight: 600; font-size: 20px;">
+            <h1>Catalog</h1>
+            <!-- Render uploaded works here -->
+            <div id="uploadedWorks" style="height: fit-content; background-color: black; margin-top: 30px; width: 1000px; border-radius: 30px; padding: 20px;">
+                <!-- Works will be dynamically added here -->
+            </div>
+
+            <div id="successPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px; z-index: 9999;">
+                <p>You have successfully uploaded an app!</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Include JavaScript to fetch and render uploaded works -->
+    <script>
+        // Function to fetch and render uploaded works
+        async function fetchAndRenderWorks() {
+            try {
+                const response = await fetch('/user-works'); // Assuming you have a route to fetch user's works
+                const works = await response.json();
+
+                // Get the container to append works
+                const uploadedWorksContainer = document.getElementById('uploadedWorks');
+
+                // Clear previous content
+                uploadedWorksContainer.innerHTML = '';
+
+                // Render each work
+                works.forEach(work => {
+                    const workElement = document.createElement('div');
+                    workElement.innerHTML = `
+                        <img src="/uploads/${work.thumb_filename}" alt="App Image" style="height: 100px; width: 100px; border-radius: 5px; margin-top: 20px; margin-left: 20px">
+                            <p style="font-size: 20px; margin-top: -60px; margin-left: 200px;">${work.apk_name}</h2>
+                            <p style="font-size: 15px; margin-left: 400px; margin-top: -50px; margin-bottom: 5px">Version: ${work.apk_version}</p>
+                            <p style="font-size: 15px; margin-left: 400px; margin-bottom: 5px">Category: ${work.category}</p>
+                            <p style="font-size: 15px; margin-left: 400px; margin-bottom: 5px">Required OS: ${work.required_os}</p>
+                            <p style="font-size: 15px; margin-left: 400px; margin-bottom: 100px">App Size: ${work.file_size}</p>    
+                        
+                        <!-- Add more details as needed -->
+                    `;
+                    uploadedWorksContainer.appendChild(workElement);
+                });
+            } catch (error) {
+                console.error('Error fetching and rendering works:', error);
+            }
+        }
+
+        // Call the function to fetch and render works when the page loads
+        window.onload = fetchAndRenderWorks;
+
+       
+    </script>
+</body>
+</html>

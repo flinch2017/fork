@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGN IN</title>
+    <link rel="stylesheet" href="s_in.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+</head>
+<body>
+<div class="wrapper">
+    <nav>
+        <a href="welcome.html">
+            <img src="logo1.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+        </a>
+        <ul>
+            <li><a href="prelogapps.html">Apps</a></li>
+            <li><a href="preforkp.html">For Creators</a></li>
+            <li><a href="preabout.html">About Us</a></li>
+        </ul>
+        <a href="sign_up.html">
+            <button>Join fork</button>
+        </a>
+        <a href="sign_in.html">
+            <su_header>Sign In</su_header>
+        </a>
+    </nav>
+</div>
+<div class="wrapper3">
+    <div style="margin-left: 350px;" class="container">
+        <form id="signin-form" action="/login" method="POST">
+            <h2 style="color: white; font-family: Arial, Helvetica, sans-serif; margin-left: 30px; font-size: medium;">Sign In to</h2>
+            <img src="forkname2.png" style="height: 100px; width: 100px; margin-left: 150px; margin-top: -60px;">
+            <input style="margin-bottom: 20px;" type="email" name="email" id="sign-in-email" placeholder="Email Address" required>
+            <input style="margin-bottom: 80px;" type="password" name="password" id="sign-in-password" placeholder="Password" required>
+            <button style="margin-bottom: 20px;" type="submit">Sign In</button>
+            <h3 style="font-size: 13px; color: white; margin-top: 50px; font-family: Arial, Helvetica, sans-serif; margin-left: 50px;">New to fork?</h3>
+            <a href="sign_up.html">
+                <s_in1>Sign Up</s_in1>
+            </a>
+            <h4 style="font-size: 13px; color: white; font-family: Arial, Helvetica, sans-serif; margin-top: -15px; margin-left: 200px;">instead</h4>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <footertitle>SIGN UP FOR fork TODAY!</footertitle>
+    <footersub>And download applications for free!</footersub>
+
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h1>Message Us</h1>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <textarea id="message" rows="4" placeholder="Enter message..."></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <img src="logo1.png" style="height: 150px; width: 150px; float: right; margin-right: 180px; margin-top: -200px">
+</div>
+<script src="server.js"></script>
+</body>
+</html>

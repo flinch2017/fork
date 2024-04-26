@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WELCOME TO FORK</title>
+    <link rel="stylesheet" href="hm.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+    <style>
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    
+        /* Style for modal content */
+        .modal-content {
+            background-color: black;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+        }
+    
+        /* Style for app categories */
+        .category {
+            margin-top: 40px; /* Adjusted margin top */
+            margin-bottom: -430px; /* Adjusted margin bottom */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    
+        .app-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0 -150px; /* Adjusted margin for spacing */
+            list-style: none;
+        }
+    
+        .app-item {
+            flex: 0 0 calc(10% - 5px); /* Adjusted width and spacing */
+            margin: 0 10px 20px; /* Adjusted margin */
+            text-align: center;
+        }
+    
+        .app-thumb {
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+    
+        .app-name {
+            margin-top: 10px; /* Adjusted margin */
+            font-family: Arial, Helvetica, sans-serif;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .lists {
+            display: flex;
+            flex-direction: row; /* Align items horizontally */
+            justify-content: center; /* Center the items horizontally */
+            list-style: none; /* Remove default list styling */
+            padding: 0; /* Remove padding */
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .lists u {
+            margin-right: 30px; /* Adjust spacing between list items */
+            margin-left: 30px;
+        }
+
+        .aboutc {
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 50px;
+        }
+
+        .aboutc p {
+            margin-top: 10px;
+        }
+
+        .getit button{
+            margin-top: 40px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <a href="home.html">
+                <img src="forkname2.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+            </a>
+        </nav>
+        <a href="welcome.html">
+            <button id="logout-button">Log Out</button>
+        </a>
+        <a href="">
+            <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+        </a>
+    </div>
+    <div class="drawer">
+        <div class="ho1">
+            <a href="home.html">
+                <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+            </a>
+        </div>
+        <div class="ho2">
+            <a href="profile.html">
+                <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+            </a>
+        </div>
+        <div class="ho3">
+            <a href="about.html">
+                <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+            </a>
+        </div> 
+    </div>
+    <div class="container">
+        <div class="searchbar">
+            <input type="search" id="searchb" placeholder="Search">
+        </div>
+        <!-- Placeholder for apps based on categories -->
+        <div id="appCategories" style="margin-left: 150px; margin-top: 20px;">
+            <!-- Categories and their corresponding apps will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Include JavaScript to fetch and render apps based on categories -->
+    <script>
+        // Function to fetch and render apps based on categories
+        async function fetchAndRenderAppsByCategory() {
+            try {
+                const response = await fetch('/apps-by-category'); // Assuming you have a route to fetch apps by category
+                const appsByCategory = await response.json();
+
+                // Get the container to append apps by category
+                const appCategoriesContainer = document.getElementById('appCategories');
+
+                // Clear previous content
+                appCategoriesContainer.innerHTML = '';
+
+                // Render apps for each category
+                Object.entries(appsByCategory).forEach(([category, apps]) => {
+                    const matchingApps = apps.filter(app => {
+                        const appName = app.apk_name.toLowerCase();
+                        const searchValue = document.getElementById('searchb').value.toLowerCase();
+                        return appName.includes(searchValue);
+                    });
+
+                    if (matchingApps.length > 0) {
+                        const categoryElement = document.createElement('div');
+                        categoryElement.classList.add('category');
+                        categoryElement.innerHTML = `
+                            <h2 style="margin-left: -150px">${category}</h2>
+                            <ul class="app-list">
+                                ${matchingApps.map(app => `
+                                    <li class="app-item">
+                                        <img src="${app.thumb_url}" alt="${app.apk_name}" class="app-thumb" onclick="showAppDetails('${app.id}')">
+                                        <br>
+                                        <a href="#" onclick="showAppDetails('${app.id}', event)" class="app-name">${app.apk_name} V${app.apk_version}</a>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        `;
+                        appCategoriesContainer.appendChild(categoryElement);
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching and rendering apps by category:', error);
+            }
+        }
+
+        // Function to show app details in a pop-up window
+        // Function to show app details in a pop-up window
+        async function showAppDetails(appId, event) {
+            event.preventDefault(); // Prevent the default action of the anchor tag
+                try {
+                    // Fetch app details from the server
+                    const response = await fetch(`/app-details/${appId}`);
+                    const appDetails = await response.json();
+
+                    // Construct the content of the pop-up window
+                    // Construct the content of the pop-up window
+                    const popupContent = `
+                        <img src="${appDetails.thumb_url}" alt="${appDetails.apk_name}" style="height: 100px; width: 100px; border-radius: 20px;">
+                        <h2 style="font-family: Arial, Helvetica, sans-serif">${appDetails.apk_name}</h2>
+                        <ul class="lists">
+                            <u>Size: ${appDetails.file_size}</u>
+                            <u>Version: ${appDetails.apk_version}</u>
+                            <u>Required OS: ${appDetails.required_os}</u>
+                        </ul>
+                        <ul class="aboutc">
+                            <p>ABOUT THE CREATOR</p>
+                            <p>Creator: @${appDetails.username}</p>    
+                        </ul>
+                        
+                        <ul class="getit">
+                            <button onclick="window.location.href='/download/${appDetails.apk_filename}'">Download</button>    
+                        </ul>
+                        
+                    `;
+
+
+        // Create a modal for showing app details
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+            <div class="modal-content">
+                ${popupContent}
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Display the modal
+        modal.style.display = 'block';
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.removeChild(modal);
+            }
+        };
+    } catch (error) {
+        console.error('Error fetching app details:', error);
+    }
+}
+
+        // Function to download the APK file
+async function downloadApp(id) {
+    try {
+        // Construct the download URL for the APK file
+        const downloadUrl = `/download/${filename}`; // Modify this URL to point to the appropriate server endpoint
+        
+        // Create an invisible anchor element to trigger the download
+        const anchor = document.createElement('a');
+        anchor.href = downloadUrl;
+        anchor.setAttribute('download', ''); // This attribute ensures the file is downloaded rather than opened
+        document.body.appendChild(anchor);
+
+        // Wait for the anchor element to be appended
+        await new Promise(resolve => setTimeout(resolve, 100)); // Wait for 100 milliseconds
+
+        // Trigger the click event on the anchor element
+        anchor.click();
+
+        // Delay removing the anchor element to ensure download completes
+        setTimeout(() => {
+            document.body.removeChild(anchor); // Clean up by removing the anchor element
+        }, 1000); // Adjust the delay as needed (e.g., 1000 milliseconds = 1 second)
+    } catch (error) {
+        console.error('Error downloading APK file:', error);
+    }
+}
+
+
+
+
+
+
+
+
+
+        // Call the function to fetch and render apps by category when the page loads
+        window.onload = fetchAndRenderAppsByCategory;
+
+        // Function to filter apps by search query
+        function filterAppsBySearch() {
+            const searchInputValue = this.value.toLowerCase(); // Convert input value to lowercase for case-insensitive search
+
+            // Get all app names
+            const appNames = document.querySelectorAll('.app-name');
+
+            // Loop through each app name and check if it matches the search query
+            appNames.forEach(appName => {
+                const appContainer = appName.closest('.app-item');
+                const appNameText = appName.textContent.toLowerCase(); // Convert app name to lowercase
+
+                // Show or hide the app based on whether it matches the search query
+                if (appNameText.includes(searchInputValue)) {
+                    appContainer.style.display = 'block'; // Show the app
+                } else {
+                    appContainer.style.display = 'none'; // Hide the app
+                }
+
+                // Check if the category should be hidden
+                const categoryElement = appContainer.closest('.category');
+                const visibleApps = categoryElement.querySelectorAll('.app-item[style="display: block;"]');
+                if (visibleApps.length === 0) {
+                    categoryElement.style.display = 'none'; // Hide the category if no apps are visible
+                } else {
+                    categoryElement.style.display = 'block'; // Show the category if at least one app is visible
+                }
+            });
+        }
+
+        // Add event listener to the search input field
+        const searchInput = document.getElementById('searchb');
+        searchInput.addEventListener('input', filterAppsBySearch);
+
+    </script>
+</body>
+</html>

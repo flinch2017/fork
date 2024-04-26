@@ -1,0 +1,155 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background-image: url("bgalt.jfif");
+    background-size: cover;
+    height: 1000px;
+}
+nav{
+    display: inline-block;
+    position: fixed;
+    background-color: black;
+    width: parent;
+    margin-left: -5px;
+    height: 50px;
+}
+
+
+
+.wrapper button{
+    height: 20px;
+    width: 90px;
+    background-color: yellow;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    margin-left: 1110px;
+    margin-top: 16px;
+
+}
+.wrapper button:hover{
+    background-color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.wrapper{
+	border: none;
+	background: black;
+	padding: 0 5px;
+	height: 50px;
+	font-size: 12px;
+	outline: none;
+    position: fixed;
+}
+
+.drawer{
+    margin-top: 50px;
+    width: 60px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    border-radius: 0px;
+    height: 600px;
+    position: fixed;
+    display: inline-block;
+    background-color: black;
+    padding: 15px;
+}
+
+.bg{
+    background-image: url("prefp.jpg");
+    height: 1000px;
+    width: 1218px;
+}
+
+.separ{
+    width: 1px;
+    height: 400px;
+    background-color: black;
+    margin-left: 630px;
+    margin-top: -850px;
+}
+.pfp{
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    margin-left: 250px;
+    margin-top: 150px;
+}
+.pfp img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #dfdfdf;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.editor {
+    background-color: white;
+}
+
+.editor{
+    background: none;
+    display: flex;
+    flex-direction: column;
+    padding: 2vw 4vw;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin-left: 750px;
+    margin-top: -200px;
+}
+
+.editor input, .editor textarea{
+    border: 0;
+    margin: 5px 0;
+    padding: 5px;
+    outline: none;
+    background: none;
+    font-size: 13px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+}
+
+.contribute{
+    margin-left: 170px;
+    margin-top: 130px;
+    height: 30px;
+    width: 300px;
+}
+
+.contribute button{
+    height: 30px;
+    width: 100px;
+    margin: 20px;
+    background-color: yellow;
+    color: black;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 5px;
+    transition: .5s;
+    border: 0;
+}
+.contribute button:hover{
+    background-color: black;
+    border: 0;
+    transition: .5s;
+    width: 110px;
+    color: yellow;
+}

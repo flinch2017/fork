@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WELCOME TO FORK+</title>
+        <link rel="stylesheet" href="upload_fp.css">
+        <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav>
+                <a href="catalog_fp.html">
+                <img src="forknamep.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+                </a>
+            </nav>
+            <a href="welcome.html">
+                <button>Log Out</button>
+            </a>
+            <a href="">
+                <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+            </a>
+        </div>
+        <div class="drawer">
+            <div class="ho1">
+                <a href="catalog_fp.html">
+                    <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+                </a>
+            </div>
+            <div class="ho2">
+                <a href="profile_fp.html">
+                    <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+            </div>
+            <div class="ho3">
+                <a href="about_fp.html">
+                <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+           </div>
+        </div>
+        <div class="container">
+            <div class="bg">
+                <img src="forknamep.png" style="height: 200px; width: 200px; margin-left: 100px; margin-top: 200px; margin-bottom: 0px;">
+                <t style="font-family: Arial, Helvetica, sans-serif; color: white; font-weight: 600; font-size: 15px; margin-left: -190px; display: inline-block;">FOR CREATORS</t>
+            </div>
+
+            <div class="fupload">
+                <h1>UPLOAD AN APPLICATION</h1>
+                <form id="upload-form" enctype="multipart/form-data" method="POST" action="/upload">
+                    <h3>Upload Apk File</h3>
+                    <input type="hidden" id="filesize" name="filesize" value="">
+
+                    <input type="file" id="apkfile" name="apkfile" accept=".apk" required style="margin-top: -10px; height: 40px; width: 200px" onchange="updateFileSize()">
+
+
+                    
+                    <h4>App Info</h4>
+                    <input type="text" id="apkname" name="apkname" placeholder="Application Name" required>
+                    <input type="text" id="apkver" name="apkver" placeholder="App Version" required>
+                    <input type="text" id="reqrdos" name="reqrdos" placeholder="Required OS" required>
+                    
+                    
+                    <h5>Upload application thumbnail (must be at least 200x200 image resolution)</h5> 
+                    <input type="file" id="apkthumb" name="apkthumb" accept="image/*" required style="height: 40px; width: 200px">
+                    
+                    <h6>Select Category</h6>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Socials">Socials</option>
+                        <option value="Games">Games</option>
+                        <option value="Educational">Educational</option>
+                        <option value="Family">Family</option>
+                        <option value="Tools">Tools</option>
+                    </select>
+                    <button type="submit">Fork!</button>
+                </form>
+                
+                <script>
+                    function updateFileSize() {
+    // Get the APK file input element
+    const apkFileInput = document.getElementById('apkfile');
+    
+    // Get the selected file
+    const apkFile = apkFileInput.files[0];
+    
+    // Calculate file size in human-readable format
+    const fileSizeInBytes = apkFile.size;
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let fileSize = fileSizeInBytes;
+    let unitIndex = 0;
+    while (fileSize >= 1024 && unitIndex < units.length - 1) {
+        fileSize /= 1024;
+        unitIndex++;
+    }
+    fileSize = fileSize.toFixed(2); // Limit to two decimal places
+    
+    // Update the file size value in the hidden input field
+    document.getElementById('filesize').value = `${fileSize} ${units[unitIndex]}`;
+}
+
+
+// Function to handle form submission
+function handleSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Create a FormData object to send form data asynchronously
+    const formData = new FormData(document.getElementById('upload-form'));
+    
+    // Send the form data to the server using fetch
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            // If upload is successful, redirect to the catalog page with a success query parameter
+            window.location.href = '/catalog_fp.html?upload=success';
+        } else {
+            // If there's an error, alert the user
+            alert('Upload failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    });
+}
+
+                </script>
+                
+    </body>
+</html>

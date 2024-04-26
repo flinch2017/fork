@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WELCOME TO FORK+</title>
+        <link rel="stylesheet" href="pfp_fp.css">
+        <link rel="shortcut icon" href="logo1.png" type="image/x-icon" class="icon">
+    </head>
+    <style>
+        .thename {
+    display: flex; /* Use flexbox to display the contents horizontally */
+    justify-content: center; /* Center the items horizontally */
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.thename p {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center the items vertically */
+    margin-right: 0px; /* Adjust spacing between items */
+    margin-left: 1px;
+}
+
+.thename p img {
+    height: 15px;
+    width: 15px;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+
+    </style>
+    <body>
+        <div class="wrapper">
+            <nav>
+                <a href="catalog_fp.html">
+                <img src="forknamep.png" style="height: 40px; width: 40px; background-position: 0px 5px; margin-left: 20px; margin-top: 5px;">
+                </a>
+            </nav>
+            <a href="welcome.html">
+                <button>Log Out</button>
+            </a>
+            <a href="">
+                <rprt style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: white; float: right; margin-right: 150px; margin-top: -16px; font-weight: 550;">Report A Bug</rprt>
+            </a>
+        </div>
+        <div class="drawer">
+            <div class="ho1">
+                <a href="catalog_fp.html">
+                    <img src="home.png" style="height: 25px; width: 25px; margin-top: 20px; margin-bottom: 40px;">
+                </a>
+            </div>
+            <div class="ho2">
+                <a href="profile_fp.html">
+                    <img src="pfp.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+            </div>
+            <div class="ho3">
+                <a href="about_fp.html">
+                <img src="about.png" style="height: 25px; width: 25px; margin-bottom: 40px">
+                </a>
+           </div>
+        </div>
+        <div class="container">
+            <div class="bg">
+                
+            </div>
+     
+            <div class="separ">
+            </div>
+            <div class="tag" style="color: white; font-size: 20px; text-align: center; font-family: Arial, Helvetica, sans-serif; margin-top: -450px; margin-left: 40px;">
+                <img src="pfp.png" style="height: 20px; margin-top: 5px;">
+                <tagger style="font-weight: 550;">Creator's Profile</tagger>
+            </div>
+            <div class="pfp">
+                <img src="pfpupload.png"/>
+
+                <div id="user-username" style="font-family: Arial, Helvetica, sans-serif; color: white; width: fit-content;"></div>
+                
+                
+            </div>
+            <div class="contribute">
+                <a href="upload.html">
+                    <button>Upload an App</button>
+                </a>
+                <a href="update.html">
+                    <button>Update an App</button>
+                </a>
+            </div>
+            <!-- Additional details -->
+    <div class="details">
+        <div id="profile-details" style="margin-left: 800px; margin-top: -230px; font-family: Arial, Helvetica, sans-serif; color: white;">
+        
+        </div>
+    </div>
+        </div>
+        <script>
+            fetch('/user-details')
+            .then(response => response.json())
+            .then(user => {
+                // Update HTML elements with user details
+                const profileDetails = document.getElementById('profile-details');
+                profileDetails.innerHTML = `
+                    <p style="margin-bottom: 5px;"><img src="pfpalt.jpg" style="height: 20px; width: 20px; border-radius: 50%"> ${user.fullname}</p>
+                    <p style="margin-bottom: 5px;"><img src="conmail.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.email}</p>
+                    <p style="margin-bottom: 5px;"><img src="wplacealt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.workplace}</p>
+                    <p style="margin-bottom: 5px;"><img src="workalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.occupation}</p>
+                    <p style="margin-bottom: 5px;"><img src="homealt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.address}</p>
+                    <p style="margin-bottom: 5px;"><img src="connumalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.contactnumber}</p>
+                    <p style="margin-bottom: 5px;"><img src="bdayalt.png" style="height: 20px; width: 20px; border-radius: 50%"> ${user.birthday}</p>
+                `;
+                const userNames = document.getElementById('user-username');
+                userNames.innerHTML = `
+                    <ul class="thename">
+                        <p>@<p>
+                        <p>${user.username}</p>
+                        <p>
+                            <img src="tick.png">
+                        </p>
+                    </ul>
+                `;
+            })
+            .catch(error => console.error('Error fetching user details:', error));
+
+        </script>
+    </body>
+</html>
